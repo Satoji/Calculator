@@ -33,6 +33,7 @@ body {
 
 .calc_form {
     background-color: var(--dkblue);
+    filter: drop-shadow(2px 2px 4px var(--shadowblue));
     border-collapse: collapse;
     padding: 1rem;
     width: 40%;
@@ -46,16 +47,40 @@ body {
 
 input[type="text"] {
     width: 100%;
-    padding: 5rem;
     border-style: none;
+
+}
+
+#display_ops {
+    padding: 2rem 1rem 0;
+    font-size: 30px;
+    color: rgb(185, 185, 185);
+}
+
+#display_ans{
+    padding: 1rem 1rem 1rem;
+}
+
+.row1 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row1 input {
+    color: white;
+    background-color: var(--dkblue);
+    font-size: 5rem;
+    text-align: right;
+    width: 100%;
 }
 
 input[type="button"] {
     width: 25%;
     padding: 1.5rem;
     border-style: none;
-    background-color: var(--dkblue);
-    background-image: linear-gradient(to bottom right, var(--dkblue) 5%, var(--blue) 80%);
+    background-image: linear-gradient(to bottom right, var(--dkblue), var(--blue) 80%);
+    background-position: left; 
+    background-size: 150%;
     filter: drop-shadow(1px 1px 4px var(--shadowblue));
     color: white;
     font-size: 20px;
@@ -63,10 +88,11 @@ input[type="button"] {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    transition: background-position 0.3s ease-in-out;
 }
 
 input[type="button"].symbol {
-    background-image: linear-gradient(to bottom right, var(--dkorange), var(--orange)  80%);
+    background-image: linear-gradient(to bottom right, var(--dkorange), var(--orange) 80%);
 }
 
 input {
@@ -74,12 +100,21 @@ input {
     border-radius: 1rem;
 }
 
+input[type="button"].equal {
+    background-image: linear-gradient(to bottom right, var(--ltblue), var(--medblue) 80%);
+}
 
 input[type="button"]:hover {
+    background-position: right; 
+    filter: drop-shadow(1px 1px 4px var(--shadowblue));
     cursor: pointer;
 }
 
-input[type="button"].span {
-    width: 58%;
+
+.row6 .zero_span {
+    width: 55%;
 }
 
+.row6 .eq_span {
+    height: 55%;
+}
