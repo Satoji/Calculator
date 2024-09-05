@@ -14,26 +14,28 @@
                     <input type="text" value="0" id="display_ans" readonly>
                 </div>
                 <div class="row2">
+                    <input type="button" value="C" onclick="clearText()" class="symbol">
+                    <input type="button" value="+/-" onclick="negate()" class="symbol">
+                    <input type="button" value="&#8730" onclick="sqrt()" class="symbol">
                     <input type="button" value="/" onclick="expr('/')" class="symbol">
-                    <input type="button" value="*" onclick="expr('*')" class="symbol">
-                    <input type="button" value="-" onclick="expr('-')" class="symbol">
-                    <input type="button" value="+" onclick="expr('+')" class="symbol">
                 </div>
                 <div class="row3">
                     <input type="button" value="7" onclick="expr('7')">
                     <input type="button" value="8" onclick="expr('8')">
                     <input type="button" value="9" onclick="expr('9')">
-                    <input type="button" value="C" onclick="clearText()">
+                    <input type="button" value="*" onclick="expr('*')" class="symbol">
                 </div>
                 <div class="row4">
                     <input type="button" value="4" onclick="expr('4')">
                     <input type="button" value="5" onclick="expr('5')">
                     <input type="button" value="6" onclick="expr('6')">
+                    <input type="button" value="+" onclick="expr('+')" class="symbol">
                 </div>
                 <div class="row5">
                     <input type="button" value="1" onclick="expr('1')">
                     <input type="button" value="2" onclick="expr('2')">
                     <input type="button" value="3" onclick="expr('3')">
+                    <input type="button" value="-" onclick="expr('-')" class="symbol">
                 </div>
                 <div class="row6">
                     <input type="button" value="0" onclick="expr('0')" class="zero_span">
