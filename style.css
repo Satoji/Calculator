@@ -1,34 +1,18 @@
 :root {
-    /*
-    --blue: hsl(214,35%,37%);
-    --medblue: hsl(202,46%,72%);
-    --ltblue: hsl(182,82%,93%);
-    --orange: hsl(12, 90%, 67%);
-    --dkorange: hsl(6, 57%, 36%);
-    --dkblue: hsl(218,23%,21%);
-    --shadowblue: hsl(247, 23%, 21%);
-
-    --shadowblack: rgb(28, 32, 41);
-    --black: rgb(34, 40, 49);
-    --gray: rgb(57, 62, 70);
-    --cyan: rgb(0, 173, 181);
-    --ltwhite: rgb(238, 238, 238);
-    */
-
     --shadowgray: hsl(0, 3%, 16%);
     --shadowblack: hsl(222, 19%, 14%);
-    --navyblue: hsl(217, 46%, 19%);
-    --blue: hsl(232, 35%, 43%);
-    --white: hsl(220, 10%, 94%);
-    --dkyellow: hsl(39, 86%, 52%);
-    --yellow: hsl(46, 70%, 64%);
-
+    
     --btgreen: hsl(134, 51%, 92%);
     --ltgreen: hsl(151, 100%, 36%);
     --dkgreen: hsl(151, 100%, 17%);
-    --shadowgreen: hsl(151, 92%, 10%);
     --ltgray: hsl(0, 0%, 34%);
     --dkgray: hsl(0, 0%, 9%);
+    --white: hsl(0, 0%, 100%);
+
+    --btnltgrayop: hsl(0, 0%, 63%);
+    --btndkgrayop: hsl(0, 0%, 35%);
+    --btnltgray: hsl(0, 0%, 39%);
+    --btndkgray: hsl(0, 0%, 22%);
 }
 
 html {
@@ -94,7 +78,7 @@ input[type="text"], input:focus {
 }
 
 .row1 input {
-    color: white;
+    color: var(--white);
     background-color: transparent;
     font-size: 5rem;
     text-align: right;
@@ -106,14 +90,13 @@ input[type="button"] {
     width: 25%;
     padding: 1.3rem;
     border-style: none;
-    background: linear-gradient(220.55deg, #646464 0%, #383838 100%);
+    background: linear-gradient(220.55deg, var(--btnltgray) 0%, var(--btndkgray) 100%);
     background-position: left; 
     background-size: 200%;
     filter: drop-shadow(1px 1px 4px var(--shadowgray));
-    color: white;
+    color: var(--white);
     font-size: 1.1rem;
     font-family: "Manrope", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     transition: background-position 0.3s ease-in-out;
@@ -126,7 +109,7 @@ input[type="button"].symbol {
 }
 
 input[type="button"].symrow {
-    background: linear-gradient(220.55deg, #a1a1a1 0%, #585858 100%);
+    background: linear-gradient(220.55deg, var(--btnltgrayop) 0%, var(--btndkgrayop) 100%);
     background-position: left; 
     background-size: 200%;
 }
@@ -156,4 +139,22 @@ input[type="button"]:hover {
 .row6 .eq_span {
     height: 55%;
     width: 25%;
+}
+
+
+@media screen and (min-width: 1020px) {
+    .row6 .zero_span {
+        min-width: 48%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .row6 .zero_span {
+        min-width: 48.5%;
+    }
+}
+@media screen and (min-width: 2110px) {
+    .row6 .zero_span {
+        min-width: 49%;
+    }
 }
