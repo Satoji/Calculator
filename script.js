@@ -79,7 +79,6 @@ function calculate(operation) {
     displayAns.value = 0;
 
     // Put numbers in array and operands in array
-    //const numberRegex = /(?<!\d)-?\d+(\.\d+)?/g;
     const numberRegex = /(?<!\d)-?\d+(\.\d+)?([eE][+-]?\d+)?/g;
     const operandRegex = /(?<=\d)[\+\*\-\/]/g;
 
@@ -154,17 +153,10 @@ function expr(input) {
     if (nextOp && displayOps.value != 0 && displayAns.value != 0) {
         if (!isNaN(input)) {
             clearText();
-            //displayOps.value = displayOps.value.slice(1)
-            //operation = operation.slice(1)
-            console.log("operation: " + operation)
-            console.log("displayAns: " + displayAns.value)
-            //return;
             operation = ''
         }
         else {
             operation = String(displayAns.value);
-            console.log("displayAns: " + displayAns.value)
-            console.log("operation: " + operation)
         }
         nextOp = false;
     }
@@ -189,33 +181,10 @@ function expr(input) {
     const lastNumber = operation.split(/[+\-*/]/).pop();
     if (input === '.' && lastNumber.includes('.')) return;
 
-    // Can't add 0 to operation if '' or if there is an operation 
-    //if ((operation == '' || operators.includes(lastChar)) && input === '0') return;
-
+    // Prevent leading 0s
     if (input === '0' && (lastChar === '0') && operation == '0') return;
-    //if (input === '0' && operation == '') return
     if (operators.includes(lastChar) && input === '0') return;
 
-    
-
-
-    /*
-    if (operators.includes(input)) { // Other operators case
-        if (operators.includes(lastChar) || operation == '') return;
-        if (operation.length < 15 || (input === '=' && operation.length < 16)) {
-            operation += input;
-        }
-    } 
-    else { // Number case
-        //if (operation.length === 1 && lastChar === '0') operation = input
-        if (lastNumber[0] === '0') lastNumber = lastNumber.slice(1);
-        console.log("sliced num: " + lastNumber)
-        //if (lastNumber[0] === '0') operation = input;
-        if (operation.length < 15 || (input === '=' && operation.length < 16)) {
-            operation += input;
-        }
-    }
-        */
 
     const canAddInput = operation.length < 15 || (input === '=' && operation.length < 16);
 
@@ -230,10 +199,6 @@ function expr(input) {
     else if (canAddInput) {
         operation += input;
     } 
-    //if (operation.length > 15 && input != '=') return; // Allow additional input only for '='
-    //else if (operation.length > 15) return;
-
-    
 
     displayOps.value = operation;
 
