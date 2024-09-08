@@ -166,8 +166,12 @@ input[type="button"]:hover {
         min-width: 48.5%;
     }
 }
+
 @media screen and (min-width: 2110px) {
     .row6 .zero_span {
         min-width: 49%;
+    }
+    .calc_form {
+        width: 20%;
     }
 }
