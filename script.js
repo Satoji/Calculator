@@ -75,10 +75,12 @@ function negate() {
 }
 
 function calculate(operation) {
+    console.log("operation: " + operation)
     displayAns.value = 0;
 
     // Put numbers in array and operands in array
-    const numberRegex = /(?<!\d)-?\d+(\.\d+)?/g;
+    //const numberRegex = /(?<!\d)-?\d+(\.\d+)?/g;
+    const numberRegex = /(?<!\d)-?\d+(\.\d+)?([eE][+-]?\d+)?/g;
     const operandRegex = /(?<=\d)[\+\*\-\/]/g;
 
     const numbers = operation.match(numberRegex).map(num => parseFloat(num));
@@ -125,14 +127,22 @@ function calculate(operation) {
     }
 
     const result = numbers[0];
+    console.log("numbers: " + numbers)
+    console.log("numbers: " + numbers[0])
+    console.log("result: " + result)
+    console.log("result.length: " + result.toString().length)
     if (isNaN(result) || !isFinite(result)) { // Display "Error" if result is NaN or infinite
         clearText();
         displayAns.value = "Error";
     } 
-    else if (result.toString().length <= 7) { // Display answer if resulting string size is >= 7
+    else if (result.toString().length <= 7) { // Display answer if resulting string size is <= 7
         displayAns.value = result;
         nextOp = true;
     } 
+    else if (result.toString().length > 7) { // Display answer if resulting string size is > 7
+        displayAns.value = Number.parseFloat(result).toExponential(2);
+        nextOp = true;
+    }
     else { 
         displayAns.value = "Error";
     }
@@ -156,7 +166,6 @@ function expr(input) {
 
     // Prevent multiple '.'
     if (input === '.' && (lastChar === '.')) return;
-    if (input === '0' && (lastChar === '')) return;
 
     // If input is operator and lastChar is '.' then remove '.'
     if (operators.includes(input) && lastChar === '.') {
@@ -167,15 +176,24 @@ function expr(input) {
     const lastNumber = operation.split(/[+\-*/]/).pop();
     if (input === '.' && lastNumber.includes('.')) return;
 
+    if (input === '0' && (lastChar === '0') && !lastNumber.includes('.')) return;
+
     if (operators.includes(input)) { // Other operators case
         if (operators.includes(lastChar) || operation == '') return;
-        operation += input;
+        if (operation.length < 15 || (input === '=' && operation.length < 16)) {
+            operation += input;
+        }
     } 
     else { // Number case
-        operation += input;
+        if (operation.length < 15 || (input === '=' && operation.length < 16)) {
+            operation += input;
+        }
     }
 
-    if (operation.length >= 18) return;
+    //if (operation.length > 15 && input != '=') return; // Allow additional input only for '='
+    //else if (operation.length > 15) return;
+
+    
 
     displayOps.value = operation;
 

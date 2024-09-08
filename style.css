@@ -13,6 +13,8 @@
     --btndkgrayop: hsl(0, 0%, 35%);
     --btnltgray: hsl(0, 0%, 39%);
     --btndkgray: hsl(0, 0%, 22%);
+
+    --displaygray: hsl(0, 0%, 73%);
 }
 
 html {
@@ -64,7 +66,7 @@ input[type="text"], input:focus {
 #display_ops {
     padding: 2rem 1rem 0;
     font-size: 30px;
-    color: rgb(185, 185, 185);
+    color: var(--displaygray);
     cursor: default;
 }
 
@@ -80,7 +82,7 @@ input[type="text"], input:focus {
 .row1 input {
     color: var(--white);
     background-color: transparent;
-    font-size: 5rem;
+    font-size: 4rem;
     text-align: right;
     width: 100%;
 }
@@ -141,6 +143,17 @@ input[type="button"]:hover {
     width: 25%;
 }
 
+
+@media screen and (max-width: 1050px) {
+    .calculator {
+        overflow: hidden;
+        resize: none;
+    }
+    .calc_form {
+        width: 70%;
+    }
+
+}
 
 @media screen and (min-width: 1020px) {
     .row6 .zero_span {
